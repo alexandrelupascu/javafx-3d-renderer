@@ -24,10 +24,17 @@ public class Application extends javafx.application.Application {
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = -1;
 
+            double x = 0, y = 40;
+
             @Override
             public void handle(long now) {
                 if (lastTime < 0) lastTime = now;
                 double dt = (now - lastTime) * 1e-9;
+
+                x += 90 * dt;
+
+                context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGH);
+                context.fillRect(x, y, 40, 40);
 
                 lastTime = now;
             }
