@@ -2,7 +2,7 @@ plugins {
   id 'java'
   id 'application'
   id 'org.javamodularity.moduleplugin' version '1.8.12'
-  id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'org.openjfx.javafxplugin' version '0.1.0'
   id 'org.beryx.jlink' version '2.25.0'
 }
 
@@ -17,8 +17,10 @@ ext {
   junitVersion = '5.9.2'
 }
 
-sourceCompatibility = "1.9"
-targetCompatibility = "1.9"
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
@@ -26,7 +28,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'com.github.alexandrelupascu.javafx3drenderer'
-  mainClass = 'com.github.alexandrelupascu.javafx3drenderer.HelloApplication'
+  mainClass = 'com.github.alexandrelupascu.javafx3drenderer.Application'
 }
 
 javafx {
@@ -35,6 +37,7 @@ javafx {
 }
 
 dependencies {
+    implementation 'org.ejml:ejml-all:0.44.0'
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
