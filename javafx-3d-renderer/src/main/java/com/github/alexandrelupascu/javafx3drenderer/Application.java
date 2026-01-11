@@ -6,26 +6,38 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-        final int SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600;
-        final int CANVAS_WIDTH = 800, CANVAS_HEIGH = 600;
 
         VBox root = new VBox();
         Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
         Canvas canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGH);
-
         GraphicsContext context = canvas.getGraphicsContext2D();
+
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = -1;
 
 
             // ---- define ----
             double x = 0, y = 40;
+
+            Vertex[] mesh = {
+                    new Vertex(-0.5,-0.5,1),
+                    new Vertex(-0.5,-0.5,2),
+                    new Vertex(0.5,-0.5,1),
+                    new Vertex(0.5,-0.5,2),
+                    new Vertex(0.5,0.5,1),
+                    new Vertex(0.5,0.5,2),
+                    new Vertex(-0.5,0.5,1),
+                    new Vertex(-0.5,0.5,2),
+
+            };
+
 
             // ---- define ----
 
@@ -37,7 +49,7 @@ public class Application extends javafx.application.Application {
 
 
                 // ---- update ----
-                x += 90 * dt;
+                //x += 90 * dt;
 
 
                 // ---- update ----
@@ -47,7 +59,9 @@ public class Application extends javafx.application.Application {
 
                 // ---- draw ----
                 context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGH);
-                context.fillRect(x, y, 40, 40);
+                for (Vertex v : mesh) {
+                    v.draw(context);
+                }
 
                 // ---- draw ----
 

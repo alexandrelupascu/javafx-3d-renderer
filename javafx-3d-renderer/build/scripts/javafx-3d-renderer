@@ -68,7 +68,6 @@
 
 # Resolve links: $0 may be a link
 app_path=$0
-APP_ARGS=`echo "$@"`
 
 # Need this for daisy-chained symlinks.
 while
@@ -115,8 +114,9 @@ case "$( uname )" in                #(
   NONSTOP* )        nonstop=true ;;
 esac
 
+CLASSPATH=$APP_HOME/lib/ejml-all-0.44.0.jar:$APP_HOME/lib/ejml-simple-0.44.0.jar:$APP_HOME/lib/ejml-fsparse-0.44.0.jar:$APP_HOME/lib/ejml-fdense-0.44.0.jar:$APP_HOME/lib/ejml-dsparse-0.44.0.jar:$APP_HOME/lib/ejml-ddense-0.44.0.jar:$APP_HOME/lib/ejml-cdense-0.44.0.jar:$APP_HOME/lib/ejml-zdense-0.44.0.jar:$APP_HOME/lib/ejml-core-0.44.0.jar
 
-MODULE_PATH=
+MODULE_PATH=$APP_HOME/lib/javafx-3d-renderer-1.0-SNAPSHOT.jar:$APP_HOME/lib/javafx-fxml-21-mac-aarch64.jar:$APP_HOME/lib/javafx-controls-21-mac-aarch64.jar:$APP_HOME/lib/javafx-graphics-21-mac-aarch64.jar:$APP_HOME/lib/javafx-base-21-mac-aarch64.jar
 
 
 # Determine the Java command to use to start the JVM.
@@ -174,6 +174,7 @@ fi
 # For Cygwin or MSYS, switch paths to Windows format before running java
 if "$cygwin" || "$msys" ; then
     APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
     MODULE_PATH=$( cygpath --path --mixed "$MODULE_PATH" )
     JAVACMD=$( cygpath --unix "$JAVACMD" )
 
@@ -203,7 +204,7 @@ fi
 
 
 # Add default JVM options here. You can also use JAVA_OPTS and JAVAFX_3D_RENDERER_OPTS to pass JVM options to this script.
-DEFAULT_JVM_OPTS='"--module-path" "$APP_HOME/lib" "--module" "com.github.alexandrelupascu.javafx3drenderer/com.github.alexandrelupascu.javafx3drenderer.HelloApplication"'
+DEFAULT_JVM_OPTS=""
 
 # Collect all arguments for the java command:
 #   * DEFAULT_JVM_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
@@ -212,8 +213,9 @@ DEFAULT_JVM_OPTS='"--module-path" "$APP_HOME/lib" "--module" "com.github.alexand
 #     treated as '${Hostname}' itself on the command line.
 
 set -- \
+        -classpath "$CLASSPATH" \
         --module-path "$MODULE_PATH" \
-        --module com.github.alexandrelupascu.javafx3drenderer/com.github.alexandrelupascu.javafx3drenderer.HelloApplication \
+        --module com.github.alexandrelupascu.javafx3drenderer/com.github.alexandrelupascu.javafx3drenderer.Application \
         "$@"
 
 # Stop when "xargs" is not available.
@@ -248,5 +250,4 @@ eval "set -- $(
         tr '\n' ' '
     )" '"$@"'
 
-eval set -- $JAVA_OPTS $JAVAFX_3D_RENDERER_OPTS $DEFAULT_JVM_OPTS "$APP_ARGS"
 exec "$JAVACMD" "$@"
