@@ -24,20 +24,7 @@ public class Application extends javafx.application.Application {
 
 
             // ---- define ----
-            double x = 0, y = 40;
-
-            Vertex[] mesh = {
-                    new Vertex(-0.5,-0.5,1),
-                    new Vertex(-0.5,-0.5,2),
-                    new Vertex(0.5,-0.5,1),
-                    new Vertex(0.5,-0.5,2),
-                    new Vertex(0.5,0.5,1),
-                    new Vertex(0.5,0.5,2),
-                    new Vertex(-0.5,0.5,1),
-                    new Vertex(-0.5,0.5,2),
-
-            };
-
+            Mesh mesh = new Mesh();
 
             // ---- define ----
 
@@ -46,10 +33,10 @@ public class Application extends javafx.application.Application {
             public void handle(long now) {
                 if (lastTime < 0) lastTime = now;
                 double dt = (now - lastTime) * 1e-9;
+                context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGH);
 
 
                 // ---- update ----
-                //x += 90 * dt;
 
 
                 // ---- update ----
@@ -58,10 +45,8 @@ public class Application extends javafx.application.Application {
 
 
                 // ---- draw ----
-                context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGH);
-                for (Vertex v : mesh) {
-                    v.draw(context);
-                }
+
+                mesh.draw(context);
 
                 // ---- draw ----
 

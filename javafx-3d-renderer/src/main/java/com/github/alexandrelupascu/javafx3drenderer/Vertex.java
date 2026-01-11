@@ -3,7 +3,7 @@ package com.github.alexandrelupascu.javafx3drenderer;
 import javafx.scene.canvas.GraphicsContext;
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 
-public class Vertex {
+public class Vertex implements Drawable{
     private double x, y, z;
 
     public Vertex(double x, double y, double z) {
@@ -18,7 +18,7 @@ public class Vertex {
     // method called from the application on a given vertex
     public void draw(GraphicsContext ctx) {
         ctx.setFill(VERTEX_COLOR);
-        ctx.fillRect(screen(Axis.X), screen(Axis.Y), VERTEX_SIZE, VERTEX_SIZE);
+        ctx.fillRect(screen(Axis.X) - VERTEX_SIZE/2, screen(Axis.Y)- VERTEX_SIZE/2, VERTEX_SIZE, VERTEX_SIZE);
     }
 
     // projects a 3D point to 2D, arguments must be vertex's x or y
@@ -34,10 +34,10 @@ public class Vertex {
 
         switch (axis) {
             case X -> {
-                return ((px + 1) / 2 * CANVAS_WIDTH) - VERTEX_SIZE/2;
+                return ((px + 1) / 2 * CANVAS_WIDTH);
             }
             case Y -> {
-                return ((1 - (py + 1) / 2) * CANVAS_HEIGH) - VERTEX_SIZE/2;
+                return ((1 - (py + 1) / 2) * CANVAS_HEIGH);
             }
             default -> {
                 System.out.println("Vertex.screen: invalid argument");
