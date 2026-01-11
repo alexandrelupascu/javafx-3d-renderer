@@ -18,23 +18,38 @@ public class Application extends javafx.application.Application {
         VBox root = new VBox();
         Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
         Canvas canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGH);
+
         GraphicsContext context = canvas.getGraphicsContext2D();
-
-
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = -1;
 
+
+            // ---- define ----
             double x = 0, y = 40;
+
+            // ---- define ----
+
 
             @Override
             public void handle(long now) {
                 if (lastTime < 0) lastTime = now;
                 double dt = (now - lastTime) * 1e-9;
 
+
+                // ---- update ----
                 x += 90 * dt;
 
+
+                // ---- update ----
+
+
+
+
+                // ---- draw ----
                 context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGH);
                 context.fillRect(x, y, 40, 40);
+
+                // ---- draw ----
 
                 lastTime = now;
             }
