@@ -8,6 +8,7 @@ plugins {
 group = 'com.github.alexandrelupascu'
 version = '1.0-SNAPSHOT'
 
+
 repositories {
     mavenCentral()
 }

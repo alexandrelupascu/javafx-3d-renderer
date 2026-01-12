@@ -1,10 +1,13 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
+import org.ejml.simple.SimpleMatrix;
 import javafx.scene.canvas.GraphicsContext;
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 
 public class Vertex implements Drawable{
     private double x, y, z;
+
+    //private DMatrix3
 
     public Vertex(double x, double y, double z) {
         this.x = x;
