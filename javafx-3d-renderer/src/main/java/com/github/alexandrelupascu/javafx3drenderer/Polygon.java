@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class Polygon implements Drawable {
     private ArrayList<Vertex> vertices;
 
+    // empty
     public Polygon() {
         vertices = new ArrayList<>();
     }
 
+    // triangle
     public Polygon(Vertex v0, Vertex v1, Vertex v2) {
         vertices = new ArrayList<>();
         vertices.add(v0);
@@ -18,6 +20,7 @@ public class Polygon implements Drawable {
         vertices.add(v2);
     }
 
+    // quad
     public Polygon(Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
         vertices = new ArrayList<>();
         vertices.add(v0);
