@@ -1,16 +1,17 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
-import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
+
 import java.util.ArrayList;
 
-public class Polygon implements Drawable {
-    private ArrayList<Vertex> vertices;
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.Axis;
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.EDGE_COLOR;
 
-    // empty
-    public Polygon() {
-        vertices = new ArrayList<>();
-    }
+public class Polygon implements Drawable {
+    private final ArrayList<Vertex> vertices;
+
+    // empty (best to avoid)
+    // public Polygon() { vertices = new ArrayList<>(); }
 
     // triangle
     public Polygon(Vertex v0, Vertex v1, Vertex v2) {
@@ -46,7 +47,5 @@ public class Polygon implements Drawable {
     }
 
 
-    public void add(Vertex v) {
-        vertices.add(v);
-    }
+    // public void add(Vertex v) { vertices.add(v); }
 }

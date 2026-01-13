@@ -6,9 +6,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 
 import java.io.IOException;
+
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 
 public class Application extends javafx.application.Application {
     @Override
@@ -24,7 +25,7 @@ public class Application extends javafx.application.Application {
 
 
             // ---- define ----
-            Mesh mesh = new Mesh();
+            final Mesh mesh = new Mesh();
 
             // ---- define ----
 
@@ -37,11 +38,9 @@ public class Application extends javafx.application.Application {
 
 
                 // ---- update ----
-                mesh.rotate(0,dt,0);
+                mesh.rotate(dt, dt, 0);
 
                 // ---- update ----
-
-
 
 
                 // ---- draw ----

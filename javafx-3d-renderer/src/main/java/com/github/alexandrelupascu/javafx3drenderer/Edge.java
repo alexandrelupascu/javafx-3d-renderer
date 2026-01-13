@@ -1,12 +1,13 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
-import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Edge implements Drawable{
-    private Vertex[] tips;
-    private Vertex v0;
-    private Vertex v1;
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
+
+public class Edge implements Drawable {
+    private final Vertex[] tips;
+    private final Vertex v0;
+    private final Vertex v1;
 
     public Edge(Vertex v0, Vertex v1) {
         tips = new Vertex[]{v0, v1};

@@ -1,13 +1,15 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
-import org.ejml.data.*;
+import org.ejml.data.DMatrix4;
+import org.ejml.data.DMatrix4x4;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.Axis;
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.Matrix;
-import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
-import static org.ejml.dense.fixed.CommonOps_DDF3.*;
+import static org.ejml.dense.fixed.CommonOps_DDF4.*;
 
 
 public class Mesh implements Drawable {
@@ -39,36 +41,45 @@ public class Mesh implements Drawable {
 
     // finds an average point to all vertices
     public void generateOrigin() {
-        DMatrix3 origin = new DMatrix3(0,0,0);
-        DMatrix3 temp = new DMatrix3(0,0,0);
+        DMatrix4 m1 = new DMatrix4(0, 0, 0, 0);
+        DMatrix4 m2 = new DMatrix4(0, 0, 0, 0);
+
         for (Vertex vertex : vertices) {
-            add(vertex.getCoords(), temp, origin);
-            temp = origin;
+            add(vertex.getCoords(), m2, m1);
+            m2 = m1;
         }
+        divide(m1, vertices.size());
 
-        divide(origin, vertices.size());
+        this.origin = new Vertex(m1);
+
+        m1.print();
     }
 
+    // rotate around a given point
     public void rotate(double yaw, double pitch, double roll, Vertex rotationPoint) {
-        internalRotate(yaw,pitch,roll, rotationPoint);
+        internalRotate(yaw, pitch, roll, rotationPoint.getCoords());
     }
 
+    // rotate around the defined origin
     public void rotate(double yaw, double pitch, double roll) {
-        internalRotate(yaw,pitch, roll,origin);
+        //DMatrix4 rotationPoint = new DMatrix4(origin.getCoords());
+
+        internalRotate(yaw, pitch, roll, origin.getCoords());
     }
 
-    private void internalRotate(double yaw, double pitch, double roll, Vertex rotationPoint) {
-        DMatrix3x3 Rz = Matrix.getR(Axis.Z, yaw);
-        DMatrix3x3 Ry = Matrix.getR(Axis.Y, pitch);
-        DMatrix3x3 Rx = Matrix.getR(Axis.X, roll);
+    private void internalRotate(double yaw, double pitch, double roll, DMatrix4 rotationPoint) {
 
-        DMatrix3x3 R = new DMatrix3x3();
-        DMatrix3x3 temp = new DMatrix3x3();
-        mult(Rz,Ry,temp);
-        mult(temp, Rx,R);
+        // create Rotation Matrix
+        DMatrix4x4 Rz = Matrix.getRotation(Axis.Z, yaw);
+        DMatrix4x4 Ry = Matrix.getRotation(Axis.Y, pitch);
+        DMatrix4x4 Rx = Matrix.getRotation(Axis.X, roll);
+        DMatrix4x4 R = new DMatrix4x4();
+        DMatrix4x4 temp = new DMatrix4x4();
+        mult(Rz, Ry, temp);
+        mult(temp, Rx, R);
 
         for (Vertex vertex : vertices) {
-            vertex.rotate(R);
+            vertex.rotate(R, rotationPoint);
         }
     }
 
