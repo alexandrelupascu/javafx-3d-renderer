@@ -1,21 +1,16 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
-import org.ejml.simple.SimpleMatrix;
 import javafx.scene.canvas.GraphicsContext;
+import org.ejml.*;
+import org.ejml.data.DMatrix3;
+
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 
 public class Vertex implements Drawable{
-    private double x, y, z;
-
-    //private DMatrix3
+    private DMatrix3 coords;
 
     public Vertex(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        if (z == 0) {
-            this.z = 0.0001; // to avoid division by 0
-        }
+        coords = new DMatrix3(x,y, (z == 0) ? 0.00001 : z);
     }
 
     // method called from the application on a given vertex
@@ -25,22 +20,31 @@ public class Vertex implements Drawable{
     }
 
     // projects a 3D point to 2D, arguments must be vertex's x or y
-    private double project(double value) {
-        return value/z;
+    private double project(Axis axis) {
+
+        switch (axis) {
+            case X -> {
+                return coords.a1/coords.a3;
+            }
+            case Y -> {
+                return coords.a2/coords.a3;
+            }
+            default -> {
+                System.out.println("Vertex.screen: invalid argument");
+                return 0.0;
+            }
+        }
     }
 
     // converts and returns the right screen coordinates, -1..1 -> 0..w and 0..h
     public double screen(Axis axis) {
 
-        double px = project(x);
-        double py = project(y);
-
         switch (axis) {
             case X -> {
-                return ((px + 1) / 2 * CANVAS_WIDTH);
+                return ((project(Axis.X) + 1) / 2 * CANVAS_WIDTH);
             }
             case Y -> {
-                return ((1 - (py + 1) / 2) * CANVAS_HEIGH);
+                return ((1 - (project(Axis.Y) + 1) / 2) * CANVAS_HEIGH);
             }
             default -> {
                 System.out.println("Vertex.screen: invalid argument");

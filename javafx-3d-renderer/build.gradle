@@ -23,13 +23,7 @@ java {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-    options.release = 21
-}
-
 application {
-    mainModule = 'com.github.alexandrelupascu.javafx3drenderer'
     mainClass = 'com.github.alexandrelupascu.javafx3drenderer.Application'
 }
 

@@ -70,11 +70,11 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\ejml-all-0.44.0.jar;%APP_HOME%\lib\ejml-simple-0.44.0.jar;%APP_HOME%\lib\ejml-fsparse-0.44.0.jar;%APP_HOME%\lib\ejml-fdense-0.44.0.jar;%APP_HOME%\lib\ejml-dsparse-0.44.0.jar;%APP_HOME%\lib\ejml-ddense-0.44.0.jar;%APP_HOME%\lib\ejml-cdense-0.44.0.jar;%APP_HOME%\lib\ejml-zdense-0.44.0.jar;%APP_HOME%\lib\ejml-core-0.44.0.jar
-set MODULE_PATH=%APP_HOME%\lib\javafx-3d-renderer-1.0-SNAPSHOT.jar;%APP_HOME%\lib\javafx-fxml-21-mac-aarch64.jar;%APP_HOME%\lib\javafx-controls-21-mac-aarch64.jar;%APP_HOME%\lib\javafx-graphics-21-mac-aarch64.jar;%APP_HOME%\lib\javafx-base-21-mac-aarch64.jar
+set CLASSPATH=%APP_HOME%\lib\javafx-3d-renderer-1.0-SNAPSHOT.jar;%APP_HOME%\lib\ejml-all-0.44.0.jar;%APP_HOME%\lib\javafx-fxml-21-mac-aarch64.jar;%APP_HOME%\lib\javafx-controls-21-mac-aarch64.jar;%APP_HOME%\lib\ejml-simple-0.44.0.jar;%APP_HOME%\lib\ejml-fsparse-0.44.0.jar;%APP_HOME%\lib\ejml-fdense-0.44.0.jar;%APP_HOME%\lib\ejml-dsparse-0.44.0.jar;%APP_HOME%\lib\ejml-ddense-0.44.0.jar;%APP_HOME%\lib\ejml-cdense-0.44.0.jar;%APP_HOME%\lib\ejml-zdense-0.44.0.jar;%APP_HOME%\lib\ejml-core-0.44.0.jar;%APP_HOME%\lib\javafx-graphics-21-mac-aarch64.jar;%APP_HOME%\lib\javafx-base-21-mac-aarch64.jar
+
 
 @rem Execute javafx-3d-renderer
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %JAVAFX_3D_RENDERER_OPTS%  -classpath "%CLASSPATH%" --module-path "%MODULE_PATH%" --module com.github.alexandrelupascu.javafx3drenderer/com.github.alexandrelupascu.javafx3drenderer.Application %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %JAVAFX_3D_RENDERER_OPTS%  -classpath "%CLASSPATH%" com.github.alexandrelupascu.javafx3drenderer.Application %*
 
 :end
 @rem End local scope for the variables with windows NT shell

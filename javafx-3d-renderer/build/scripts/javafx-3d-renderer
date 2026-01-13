@@ -114,9 +114,7 @@ case "$( uname )" in                #(
   NONSTOP* )        nonstop=true ;;
 esac
 
-CLASSPATH=$APP_HOME/lib/ejml-all-0.44.0.jar:$APP_HOME/lib/ejml-simple-0.44.0.jar:$APP_HOME/lib/ejml-fsparse-0.44.0.jar:$APP_HOME/lib/ejml-fdense-0.44.0.jar:$APP_HOME/lib/ejml-dsparse-0.44.0.jar:$APP_HOME/lib/ejml-ddense-0.44.0.jar:$APP_HOME/lib/ejml-cdense-0.44.0.jar:$APP_HOME/lib/ejml-zdense-0.44.0.jar:$APP_HOME/lib/ejml-core-0.44.0.jar
-
-MODULE_PATH=$APP_HOME/lib/javafx-3d-renderer-1.0-SNAPSHOT.jar:$APP_HOME/lib/javafx-fxml-21-mac-aarch64.jar:$APP_HOME/lib/javafx-controls-21-mac-aarch64.jar:$APP_HOME/lib/javafx-graphics-21-mac-aarch64.jar:$APP_HOME/lib/javafx-base-21-mac-aarch64.jar
+CLASSPATH=$APP_HOME/lib/javafx-3d-renderer-1.0-SNAPSHOT.jar:$APP_HOME/lib/ejml-all-0.44.0.jar:$APP_HOME/lib/javafx-fxml-21-mac-aarch64.jar:$APP_HOME/lib/javafx-controls-21-mac-aarch64.jar:$APP_HOME/lib/ejml-simple-0.44.0.jar:$APP_HOME/lib/ejml-fsparse-0.44.0.jar:$APP_HOME/lib/ejml-fdense-0.44.0.jar:$APP_HOME/lib/ejml-dsparse-0.44.0.jar:$APP_HOME/lib/ejml-ddense-0.44.0.jar:$APP_HOME/lib/ejml-cdense-0.44.0.jar:$APP_HOME/lib/ejml-zdense-0.44.0.jar:$APP_HOME/lib/ejml-core-0.44.0.jar:$APP_HOME/lib/javafx-graphics-21-mac-aarch64.jar:$APP_HOME/lib/javafx-base-21-mac-aarch64.jar
 
 
 # Determine the Java command to use to start the JVM.
@@ -175,7 +173,7 @@ fi
 if "$cygwin" || "$msys" ; then
     APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
     CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
-    MODULE_PATH=$( cygpath --path --mixed "$MODULE_PATH" )
+
     JAVACMD=$( cygpath --unix "$JAVACMD" )
 
     # Now convert the arguments - kludge to limit ourselves to /bin/sh
@@ -214,8 +212,7 @@ DEFAULT_JVM_OPTS=""
 
 set -- \
         -classpath "$CLASSPATH" \
-        --module-path "$MODULE_PATH" \
-        --module com.github.alexandrelupascu.javafx3drenderer/com.github.alexandrelupascu.javafx3drenderer.Application \
+        com.github.alexandrelupascu.javafx3drenderer.Application \
         "$@"
 
 # Stop when "xargs" is not available.
