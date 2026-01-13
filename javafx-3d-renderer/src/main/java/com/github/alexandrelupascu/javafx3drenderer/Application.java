@@ -37,7 +37,7 @@ public class Application extends javafx.application.Application {
 
 
                 // ---- update ----
-
+                mesh.rotate(0,dt,0);
 
                 // ---- update ----
 

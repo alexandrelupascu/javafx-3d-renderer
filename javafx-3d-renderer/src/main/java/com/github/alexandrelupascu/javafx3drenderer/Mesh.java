@@ -1,16 +1,23 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
+import org.ejml.data.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.Matrix;
+import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
+import static org.ejml.dense.fixed.CommonOps_DDF3.*;
+
 
 public class Mesh implements Drawable {
     ArrayList<Vertex> vertices = new ArrayList<>();
     ArrayList<Polygon> polygons = new ArrayList<>();
+    Vertex origin;
 
     public Mesh() {
         generateMesh();
+        generateOrigin();
     }
 
 
@@ -28,6 +35,41 @@ public class Mesh implements Drawable {
     public void generateMesh() {
         generateVertices();
         generatePolygons();
+    }
+
+    // finds an average point to all vertices
+    public void generateOrigin() {
+        DMatrix3 origin = new DMatrix3(0,0,0);
+        DMatrix3 temp = new DMatrix3(0,0,0);
+        for (Vertex vertex : vertices) {
+            add(vertex.getCoords(), temp, origin);
+            temp = origin;
+        }
+
+        divide(origin, vertices.size());
+    }
+
+    public void rotate(double yaw, double pitch, double roll, Vertex rotationPoint) {
+        internalRotate(yaw,pitch,roll, rotationPoint);
+    }
+
+    public void rotate(double yaw, double pitch, double roll) {
+        internalRotate(yaw,pitch, roll,origin);
+    }
+
+    private void internalRotate(double yaw, double pitch, double roll, Vertex rotationPoint) {
+        DMatrix3x3 Rz = Matrix.getR(Axis.Z, yaw);
+        DMatrix3x3 Ry = Matrix.getR(Axis.Y, pitch);
+        DMatrix3x3 Rx = Matrix.getR(Axis.X, roll);
+
+        DMatrix3x3 R = new DMatrix3x3();
+        DMatrix3x3 temp = new DMatrix3x3();
+        mult(Rz,Ry,temp);
+        mult(temp, Rx,R);
+
+        for (Vertex vertex : vertices) {
+            vertex.rotate(R);
+        }
     }
 
     public void generateVertices() {
