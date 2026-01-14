@@ -22,23 +22,34 @@ public class Application extends javafx.application.Application {
 
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = -1;
-
+            private double time = 0;
 
             // ---- define ----
-            final Mesh mesh = new Mesh();
+            Mesh mesh = new Mesh("Placeholder");
 
             // ---- define ----
 
 
             @Override
             public void handle(long now) {
-                if (lastTime < 0) lastTime = now;
+                if (lastTime < 0) {
+                    lastTime = now;
+
+                    // ---- start ----
+                    mesh.moveBy(0,0,-5);
+
+                    // ---- start ----
+
+
+                }
                 double dt = (now - lastTime) * 1e-9;
+                time += dt;
                 context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGH);
 
 
                 // ---- update ----
-                mesh.rotate(dt, dt, 0);
+                mesh.rotateBy(dt, dt, 0);
+                mesh.moveBy(Math.cos(time) * dt,(Math.sin(time) + 1) * dt, 0);
 
                 // ---- update ----
 

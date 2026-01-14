@@ -17,7 +17,7 @@ public class Mesh implements Drawable {
     ArrayList<Polygon> polygons = new ArrayList<>();
     Vertex origin;
 
-    public Mesh() {
+    public Mesh(String filePath) {
         generateMesh();
         generateOrigin();
     }
@@ -32,6 +32,8 @@ public class Mesh implements Drawable {
         for (Vertex v : vertices) {
             v.draw(ctx);
         }
+
+        origin.draw(ctx);
     }
 
     public void generateMesh() {
@@ -51,25 +53,31 @@ public class Mesh implements Drawable {
         divide(m1, vertices.size());
 
         this.origin = new Vertex(m1);
-
-        m1.print();
     }
 
+    public void moveBy(double x, double y, double z) {
+
+        origin.moveBy(x, y, z);
+        for (Vertex vertex : vertices) {
+            vertex.moveBy(x, y, z);
+        }
+    }
+
+
     // rotate around a given point
-    public void rotate(double yaw, double pitch, double roll, Vertex rotationPoint) {
+    public void rotateBy(double yaw, double pitch, double roll, Vertex rotationPoint) {
         internalRotate(yaw, pitch, roll, rotationPoint.getCoords());
     }
 
     // rotate around the defined origin
-    public void rotate(double yaw, double pitch, double roll) {
-        //DMatrix4 rotationPoint = new DMatrix4(origin.getCoords());
-
+    public void rotateBy(double yaw, double pitch, double roll) {
         internalRotate(yaw, pitch, roll, origin.getCoords());
     }
 
     private void internalRotate(double yaw, double pitch, double roll, DMatrix4 rotationPoint) {
 
         // create Rotation Matrix
+        // R = Rz x Ry x Rx
         DMatrix4x4 Rz = Matrix.getRotation(Axis.Z, yaw);
         DMatrix4x4 Ry = Matrix.getRotation(Axis.Y, pitch);
         DMatrix4x4 Rx = Matrix.getRotation(Axis.X, roll);
@@ -81,6 +89,10 @@ public class Mesh implements Drawable {
         for (Vertex vertex : vertices) {
             vertex.rotate(R, rotationPoint);
         }
+    }
+
+    public void resizeBy(double factor) {
+
     }
 
     public void generateVertices() {

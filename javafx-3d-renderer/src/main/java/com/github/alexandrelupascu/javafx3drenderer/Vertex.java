@@ -78,7 +78,7 @@ public class Vertex implements Drawable {
     }
 
     public void rotate(DMatrix4x4 R, DMatrix4 origin) {
-        // temps, there must be a better way to do ts
+        // temps
         DMatrix4 v1 = new DMatrix4();
         DMatrix4x4 m1 = new DMatrix4x4();
         DMatrix4x4 m2 = new DMatrix4x4();
@@ -88,6 +88,12 @@ public class Vertex implements Drawable {
         mult(m1, Matrix.getTranslateOrigin(Matrix.getInverse(origin)), m2);
         mult(m2,coords,v1);
         coords = v1;
+    }
+
+    public void moveBy(double x, double y, double z) {
+        coords.a1 += x;
+        coords.a2 += y;
+        coords.a3 += z;
     }
 
     public DMatrix4 getCoords() {
