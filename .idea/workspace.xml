@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f99ca74-85db-4cd0-b695-2f6e24770f71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.lock" afterDir="false" />
@@ -14,12 +12,10 @@
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Edge.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Mesh.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Mesh.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Polygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Polygon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Axis.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Axis.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Matrix.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities.class" afterDir="false" />
@@ -30,10 +26,7 @@
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Drawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Mesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Polygon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Vertex.java" afterDir="false" />
     </list>
@@ -66,6 +59,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,7 +143,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768250015249</updated>
       <workItem from="1768250016571" duration="14213000" />
-      <workItem from="1768324575610" duration="9015000" />
+      <workItem from="1768324575610" duration="26208000" />
     </task>
     <servers />
   </component>

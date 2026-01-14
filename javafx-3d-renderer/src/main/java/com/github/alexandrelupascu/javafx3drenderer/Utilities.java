@@ -1,9 +1,11 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import org.ejml.data.DMatrix3;
 import org.ejml.data.DMatrix4;
 import org.ejml.data.DMatrix4x4;
+
 
 public class Utilities {
     final static int SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600;
@@ -14,6 +16,16 @@ public class Utilities {
 
     final static double EDGE_SIZE = 3;
     final static Color EDGE_COLOR = Color.BLUE;
+
+    final static Color COORDS_COLOR = Color.RED;
+    final static Font COORDS_FONT = new Font(12);
+
+    final static double FIXED_UPDATE_TARGET_RATE = 0.1; // 12ms
+
+    public static String round(double number, int digits) {
+        String amt = "%." + digits + "f";
+        return String.format(amt, number);
+    }
 
     public enum Axis {
         X,

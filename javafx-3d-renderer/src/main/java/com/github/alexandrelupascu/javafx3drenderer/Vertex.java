@@ -1,16 +1,15 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.text.Font;
 import org.ejml.data.DMatrix4;
 import org.ejml.data.DMatrix4x4;
 
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
-import static org.ejml.dense.fixed.CommonOps_DDF4.add;
-import static org.ejml.dense.fixed.CommonOps_DDF4.mult;
+import static org.ejml.dense.fixed.CommonOps_DDF4.*;
 
 public class Vertex implements Drawable {
     private DMatrix4 coords; // homogenous coordinates
-    private DMatrix4 originOffset;
 
     public Vertex(double x, double y, double z) {
         x = sanitizeCoordinate(x);
@@ -24,15 +23,6 @@ public class Vertex implements Drawable {
         return (coord == 0) ? 0.0000000001 : coord;
     }
 
-    public Vertex(Vertex origin, DMatrix4 originOffset) {
-        if (origin != null && originOffset != null) {
-            this.originOffset = originOffset;
-            add(origin.getCoords(), originOffset, coords);
-        } else {
-            System.out.println("Vertex: Couldn't create vertex, argument(s) cannot be null.");
-        }
-    }
-
     public Vertex(DMatrix4 coords) {
         this.coords = coords;
     }
@@ -41,6 +31,13 @@ public class Vertex implements Drawable {
     public void draw(GraphicsContext ctx) {
         ctx.setFill(VERTEX_COLOR);
         ctx.fillRect(screen(Axis.X) - VERTEX_SIZE / 2, screen(Axis.Y) - VERTEX_SIZE / 2, VERTEX_SIZE, VERTEX_SIZE);
+    }
+
+    public void drawCoords(GraphicsContext ctx) {
+        ctx.setFill(COORDS_COLOR);
+        ctx.setFont(COORDS_FONT);
+        String drawnCoords = "( " + round(coords.a1, 2) + ", " + round(coords.a2, 2) + ", " + round(coords.a3, 2) + " )";
+        ctx.fillText(drawnCoords, screen(Axis.X), screen(Axis.Y));
     }
 
     // projects a 3D point to 2D, arguments must be vertex's x or y
@@ -68,7 +65,8 @@ public class Vertex implements Drawable {
                 return ((project(Axis.X) + 1) / 2 * CANVAS_WIDTH);
             }
             case Y -> {
-                return ((1 - (project(Axis.Y) + 1) / 2) * CANVAS_HEIGH);
+                return ((project(Axis.Y) + 1) / 2 * CANVAS_HEIGH);
+                // return ((1 - (project(Axis.Y) + 1) / 2) * CANVAS_HEIGH);
             }
             default -> {
                 System.out.println("Vertex.screen: invalid argument");

@@ -25,6 +25,7 @@ public class Mesh implements Drawable {
 
     public void draw(GraphicsContext ctx) {
 
+
         for (Polygon p : polygons) {
             p.draw(ctx);
         }
@@ -34,6 +35,7 @@ public class Mesh implements Drawable {
         }
 
         origin.draw(ctx);
+        origin.drawCoords(ctx);
     }
 
     public void generateMesh() {
@@ -91,8 +93,21 @@ public class Mesh implements Drawable {
         }
     }
 
-    public void resizeBy(double factor) {
+    public void resizeBy(double scaleFactor) {
+        for (Vertex v : vertices) {
+            DMatrix4 scaleDirection = findScaleDirection(v, origin, scaleFactor);
+            v.moveBy(scaleDirection.a1, scaleDirection.a2, scaleDirection.a3);
+        }
+    }
 
+    // returns a vector from v1 to v2
+    private DMatrix4 findScaleDirection(Vertex v1, Vertex v2, double factor) {
+        DMatrix4 result = new DMatrix4(0,0,0,1);
+        result.a1 = (v2.getCoords().a1 - v1.getCoords().a1) * factor;
+        result.a2 = (v2.getCoords().a2 - v1.getCoords().a2) * factor;
+        result.a3 = (v2.getCoords().a3 - v1.getCoords().a3) * factor;
+
+        return result;
     }
 
     public void generateVertices() {
