@@ -7,7 +7,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
@@ -16,25 +15,28 @@ public class Application extends javafx.application.Application {
 
     // Define Objects here :
     // ---- define ----
-    Mesh mesh = new Mesh("Placeholder");
+
+
+    //Mesh mesh = new Mesh();
+    Mesh mesh = new Mesh("monkey.fbx");
 
 
     // ---- define ----
 
-    public static void main(String[] args) {
-        launch();
-    }
 
     // called once
     private void initialize() {
         mesh.moveBy(0, -1, -5);
+        mesh.rotateBy(0, 0, 90);
+        mesh.resizeBy(2);
     }
 
     // called every frame
     private void update(double t, double dt) {
-        mesh.rotateBy(dt, dt, 0);
+        mesh.rotateBy(0, dt, 0);
         mesh.moveBy(Math.cos(t) * dt, Math.sin(t) * dt, 0);
-        mesh.resizeBy(Math.cos(t) * dt);
+        //mesh.resizeBy(Math.sin(t + 0.65) * dt * 0.5);
+
     }
 
     // called a set amount of time each frame
@@ -45,6 +47,7 @@ public class Application extends javafx.application.Application {
     // renders onto the given graphics context
     private void draw(GraphicsContext ctx) {
         mesh.draw(ctx);
+
     }
 
     @Override
@@ -85,5 +88,9 @@ public class Application extends javafx.application.Application {
         stage.setScene(scene);
         stage.setTitle("3D Renderer");
         stage.show();
+    }
+
+    static void main(String[] args) {
+        launch();
     }
 }

@@ -2,16 +2,18 @@ package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import org.ejml.data.DMatrix3;
 import org.ejml.data.DMatrix4;
 import org.ejml.data.DMatrix4x4;
+
+import java.io.File;
+import java.nio.file.Path;
 
 
 public class Utilities {
     final static int SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600;
     final static int CANVAS_WIDTH = 800, CANVAS_HEIGH = 600;
 
-    final static double VERTEX_SIZE = 10;
+    final static double VERTEX_SIZE = 2;
     final static Color VERTEX_COLOR = Color.BLUE;
 
     final static double EDGE_SIZE = 3;
@@ -80,7 +82,13 @@ public class Utilities {
         }
 
         public static DMatrix4 getInverse(DMatrix4 vec) {
-            return new DMatrix4(-vec.a1,-vec.a2,-vec.a3,1);
+            return new DMatrix4(-vec.a1, -vec.a2, -vec.a3, 1);
         }
+    }
+
+    public static String getFileExtension(Path path) {
+        String fileName = new File(path.toString()).getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
     }
 }

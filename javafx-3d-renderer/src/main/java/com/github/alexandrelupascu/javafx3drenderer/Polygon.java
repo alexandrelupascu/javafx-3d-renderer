@@ -10,25 +10,10 @@ import static com.github.alexandrelupascu.javafx3drenderer.Utilities.EDGE_COLOR;
 public class Polygon implements Drawable {
     private final ArrayList<Vertex> vertices;
 
-    // empty (best to avoid)
-    // public Polygon() { vertices = new ArrayList<>(); }
-
-    // triangle
-    public Polygon(Vertex v0, Vertex v1, Vertex v2) {
-        vertices = new ArrayList<>();
-        vertices.add(v0);
-        vertices.add(v1);
-        vertices.add(v2);
+    public Polygon(ArrayList<Vertex> vertices) {
+        this.vertices = vertices;
     }
 
-    // quad
-    public Polygon(Vertex v0, Vertex v1, Vertex v2, Vertex v3) {
-        vertices = new ArrayList<>();
-        vertices.add(v0);
-        vertices.add(v1);
-        vertices.add(v2);
-        vertices.add(v3);
-    }
 
     public void draw(GraphicsContext ctx) {
         ctx.setStroke(EDGE_COLOR);
@@ -47,5 +32,7 @@ public class Polygon implements Drawable {
     }
 
 
-    // public void add(Vertex v) { vertices.add(v); }
+    public void add(Vertex v) {
+        vertices.add(v);
+    }
 }

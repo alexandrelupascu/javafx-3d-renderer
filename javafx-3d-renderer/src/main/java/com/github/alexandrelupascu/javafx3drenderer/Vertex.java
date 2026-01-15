@@ -1,12 +1,11 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.text.Font;
 import org.ejml.data.DMatrix4;
 import org.ejml.data.DMatrix4x4;
 
 import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
-import static org.ejml.dense.fixed.CommonOps_DDF4.*;
+import static org.ejml.dense.fixed.CommonOps_DDF4.mult;
 
 public class Vertex implements Drawable {
     private DMatrix4 coords; // homogenous coordinates
@@ -84,7 +83,7 @@ public class Vertex implements Drawable {
         // T(o) x R x T(-o) x coords = newCoords
         mult(Matrix.getTranslateOrigin(origin), R, m1);
         mult(m1, Matrix.getTranslateOrigin(Matrix.getInverse(origin)), m2);
-        mult(m2,coords,v1);
+        mult(m2, coords, v1);
         coords = v1;
     }
 
