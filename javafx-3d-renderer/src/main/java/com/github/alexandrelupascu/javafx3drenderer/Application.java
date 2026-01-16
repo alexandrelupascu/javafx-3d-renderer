@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,8 +18,12 @@ public class Application extends javafx.application.Application {
     // ---- define ----
 
 
-    //Mesh mesh = new Mesh();
-    Mesh mesh = new Mesh("monkey.fbx");
+
+    Mesh center = new Mesh("sphere.fbx", Color.PURPLE);
+    Mesh small1 = new Mesh("sphere.fbx", Color.BLUEVIOLET);
+    Mesh small2 = new Mesh("sphere.fbx", Color.BLUEVIOLET);
+    Mesh small3 = new Mesh("sphere.fbx", Color.BLUEVIOLET);
+
 
 
     // ---- define ----
@@ -26,16 +31,27 @@ public class Application extends javafx.application.Application {
 
     // called once
     private void initialize() {
-        mesh.moveBy(0, -1, -5);
-        mesh.rotateBy(0, 0, 90);
-        mesh.resizeBy(2);
+        center.moveBy(0,0,-4);
+
+        small1.moveBy(0,0,-4);
+        small2.moveBy(0,0,-4);
+        small3.moveBy(0,0,-4);
+
+        small1.scaleBy(-1);
+        small2.scaleBy(0.9);
+        small3.scaleBy(0.9);
+
+        small2.rotateBy(0,120,0);
+        small3.rotateBy(0,240,0);
+
     }
 
     // called every frame
     private void update(double t, double dt) {
-        mesh.rotateBy(0, dt, 0);
-        mesh.moveBy(Math.cos(t) * dt, Math.sin(t) * dt, 0);
-        //mesh.resizeBy(Math.sin(t + 0.65) * dt * 0.5);
+        double rotationSpeed = 50 * dt;
+        small1.rotateBy(rotationSpeed, rotationSpeed, 0);
+        small2.rotateBy(0, rotationSpeed, rotationSpeed);
+        small3.rotateBy(rotationSpeed, 0, rotationSpeed);
 
     }
 
@@ -46,7 +62,10 @@ public class Application extends javafx.application.Application {
 
     // renders onto the given graphics context
     private void draw(GraphicsContext ctx) {
-        mesh.draw(ctx);
+        center.draw(ctx, ORIGIN_COLOR);
+        small1.draw(ctx, ORIGIN_COLOR);
+        small2.draw(ctx, ORIGIN_COLOR);
+        small3.draw(ctx, ORIGIN_COLOR);
 
     }
 

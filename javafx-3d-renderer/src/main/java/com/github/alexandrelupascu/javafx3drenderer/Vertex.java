@@ -1,6 +1,7 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import org.ejml.data.DMatrix4;
 import org.ejml.data.DMatrix4x4;
 
@@ -27,8 +28,8 @@ public class Vertex implements Drawable {
     }
 
     // method called from the application on a given vertex
-    public void draw(GraphicsContext ctx) {
-        ctx.setFill(VERTEX_COLOR);
+    public void draw(GraphicsContext ctx, Color drawColor) {
+        ctx.setFill(drawColor);
         ctx.fillRect(screen(Axis.X) - VERTEX_SIZE / 2, screen(Axis.Y) - VERTEX_SIZE / 2, VERTEX_SIZE, VERTEX_SIZE);
     }
 

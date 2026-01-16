@@ -15,12 +15,15 @@ public class Utilities {
 
     final static double VERTEX_SIZE = 2;
     final static Color VERTEX_COLOR = Color.BLUE;
+    final static Color ORIGIN_COLOR= Color.RED;
 
     final static double EDGE_SIZE = 3;
     final static Color EDGE_COLOR = Color.BLUE;
 
     final static Color COORDS_COLOR = Color.RED;
     final static Font COORDS_FONT = new Font(12);
+
+    final static Color DEFAULT_COLOR = Color.BLUE;
 
     final static double FIXED_UPDATE_TARGET_RATE = 0.1; // 12ms
 

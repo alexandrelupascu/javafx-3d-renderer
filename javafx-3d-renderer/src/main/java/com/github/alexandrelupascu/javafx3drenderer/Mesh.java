@@ -2,6 +2,7 @@ package com.github.alexandrelupascu.javafx3drenderer;
 
 import com.lukaseichberg.fbxloader.*;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import org.ejml.data.DMatrix4;
 import org.ejml.data.DMatrix4x4;
 
@@ -18,45 +19,70 @@ public class Mesh implements Drawable {
     private final ArrayList<Vertex> vertices = new ArrayList<>();
     private final ArrayList<Polygon> polygons = new ArrayList<>();
     private Vertex origin;
+    private String fileName;
+
+    private Color vertexColor;
+    private Color edgesColor;
 
     public Mesh(String fileName) {
-        generateMesh(fileName);
+        if (generateMesh(fileName)) this.fileName = fileName;
         generateOrigin();
+        this.vertexColor = DEFAULT_COLOR;
+        this.edgesColor = DEFAULT_COLOR;
+
+    }
+
+    public Mesh(String fileName, Color drawColor) {
+        if (generateMesh(fileName)) this.fileName = fileName;
+        generateOrigin();
+        this.vertexColor = drawColor;
+        this.edgesColor = drawColor;
+        this.fileName = fileName;
+    }
+
+    public Mesh(String fileName, Color vertexColor, Color edgesColor) {
+        if (generateMesh(fileName)) this.fileName = fileName;
+        generateOrigin();
+        this.vertexColor = vertexColor;
+        this.edgesColor = edgesColor;
+        this.fileName = fileName;
     }
 
     @Override
-    public void draw(GraphicsContext ctx) {
+    public void draw(GraphicsContext ctx, Color originColor) {
         for (Polygon p : polygons) {
-            p.draw(ctx);
+            p.draw(ctx, edgesColor);
         }
         for (Vertex v : vertices) {
-            v.draw(ctx);
+            v.draw(ctx, vertexColor);
         }
 
-        origin.draw(ctx);
+        origin.draw(ctx, originColor);
         origin.drawCoords(ctx);
     }
 
-    public void generateMesh(String fileName) {
+    public boolean generateMesh(String fileName) {
         Path filePath = resolveFilePath(fileName);
 
         if (!validateFilePath(filePath, fileName)) {
-            return;
+            return false;
         }
 
         if (!isValidFbxFile(filePath, fileName)) {
-            return;
+            return false;
         }
 
         FBXFile fbxFile = loadFbxFile(filePath);
         if (fbxFile == null) {
-            return;
+            return false;
         }
 
         double[] vertexData = extractVertexData(fbxFile);
         int[] polygonData = extractPolygonData(fbxFile);
 
         generateMesh(vertexData, polygonData);
+
+        return true;
     }
 
     public void generateMesh(double[] vertexData, int[] polygonData) {
@@ -84,16 +110,21 @@ public class Mesh implements Drawable {
     }
 
     // rotate around a given point
-    public void rotateBy(double yaw, double pitch, double roll, Vertex rotationPoint) {
+    public void rotateBy(double pitch, double yaw, double roll, Vertex rotationPoint) {
         internalRotate(yaw, pitch, roll, rotationPoint.getCoords());
     }
 
     // rotate around the defined origin
-    public void rotateBy(double yaw, double pitch, double roll) {
+    public void rotateBy(double pitch, double yaw, double roll) {
+        yaw = Math.toRadians(yaw);
+        pitch = Math.toRadians(pitch);
+        roll = Math.toRadians(roll);
         internalRotate(yaw, pitch, roll, origin.getCoords());
     }
 
-    public void resizeBy(double scaleFactor) {
+    public void scaleBy(double scaleFactor) {
+
+
         for (Vertex vertex : vertices) {
             DMatrix4 scaleDirection = findScaleDirection(vertex, origin, scaleFactor);
             vertex.moveBy(scaleDirection.a1, scaleDirection.a2, scaleDirection.a3);
@@ -203,9 +234,9 @@ public class Mesh implements Drawable {
     private void createPolygonsFromData(int[] polygonData) {
         ArrayList<Integer> verticesIndexes = new ArrayList<>();
 
-        for (int polygonIndex : polygonData) {
-            if (polygonIndex < 0) {
-                verticesIndexes.add(Math.abs(polygonIndex) - 1);
+        for (int vertexIndex : polygonData) {
+            if (vertexIndex < 0) {
+                verticesIndexes.add(Math.abs(vertexIndex) - 1);
                 ArrayList<Vertex> verticesToAdd = new ArrayList<>();
                 for (int i : verticesIndexes) {
                     verticesToAdd.add(this.vertices.get(i));
@@ -213,9 +244,11 @@ public class Mesh implements Drawable {
                 this.polygons.add(new Polygon(verticesToAdd));
                 verticesIndexes.clear();
             } else {
-                verticesIndexes.add(polygonIndex);
+                verticesIndexes.add(vertexIndex);
             }
         }
     }
+
+
 }
 

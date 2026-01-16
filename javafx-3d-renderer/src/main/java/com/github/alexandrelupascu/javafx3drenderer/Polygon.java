@@ -1,6 +1,7 @@
 package com.github.alexandrelupascu.javafx3drenderer;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,8 @@ public class Polygon implements Drawable {
     }
 
 
-    public void draw(GraphicsContext ctx) {
-        ctx.setStroke(EDGE_COLOR);
+    public void draw(GraphicsContext ctx, Color drawColor) {
+        ctx.setStroke(drawColor);
         ctx.beginPath();
 
         // start at first vertex
