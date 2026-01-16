@@ -106,11 +106,24 @@ public class Mesh implements Drawable {
 
     public void moveBy(double x, double y, double z) {
         origin.moveBy(x, y, z);
-        vertices.forEach(vertex -> vertex.moveBy(x, y, z));
+        for (Vertex v : vertices) {
+            v.moveBy(x, y, z);
+        }
+    }
+
+    // to be called only in Application.initialize()
+    public void moveAt(double x, double y, double z) {
+        origin.moveAt(x,y,z);
+        for (Vertex v : vertices) {
+            v.moveAt(x, y, z);
+        }
     }
 
     // rotate around a given point
     public void rotateBy(double pitch, double yaw, double roll, Vertex rotationPoint) {
+        yaw = Math.toRadians(yaw);
+        pitch = Math.toRadians(pitch);
+        roll = Math.toRadians(roll);
         internalRotate(yaw, pitch, roll, rotationPoint.getCoords());
     }
 
@@ -123,17 +136,20 @@ public class Mesh implements Drawable {
     }
 
     public void scaleBy(double scaleFactor) {
+        scaleFactor = scaleFactor - 1;
 
-
-        for (Vertex vertex : vertices) {
-            DMatrix4 scaleDirection = findScaleDirection(vertex, origin, scaleFactor);
-            vertex.moveBy(scaleDirection.a1, scaleDirection.a2, scaleDirection.a3);
+        for (Vertex v : vertices) {
+            DMatrix4 scaleDirection = findScaleDirection(origin, v, scaleFactor);
+            v.moveBy(scaleDirection.a1, scaleDirection.a2, scaleDirection.a3);
         }
     }
 
-    private void internalRotate(double yaw, double pitch, double roll, DMatrix4 rotationPoint) {
-        DMatrix4x4 rotationMatrix = createRotationMatrix(yaw, pitch, roll);
-        vertices.forEach(vertex -> vertex.rotate(rotationMatrix, rotationPoint));
+    private void internalRotate(double pitch, double yaw, double roll, DMatrix4 rotationPoint) {
+        DMatrix4x4 rotationMatrix = createRotationMatrix(roll, pitch, yaw);
+        for (Vertex v : vertices) {
+            v.rotate(rotationMatrix, rotationPoint);
+        }
+        origin.rotate(rotationMatrix, rotationPoint);
     }
 
     private DMatrix4x4 createRotationMatrix(double yaw, double pitch, double roll) {
@@ -249,6 +265,8 @@ public class Mesh implements Drawable {
         }
     }
 
-
+    public Vertex getOrigin() {
+        return origin;
+    }
 }
 

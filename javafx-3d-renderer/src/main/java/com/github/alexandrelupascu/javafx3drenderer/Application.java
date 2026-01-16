@@ -19,10 +19,10 @@ public class Application extends javafx.application.Application {
 
 
 
-    Mesh center = new Mesh("sphere.fbx", Color.PURPLE);
-    Mesh small1 = new Mesh("sphere.fbx", Color.BLUEVIOLET);
-    Mesh small2 = new Mesh("sphere.fbx", Color.BLUEVIOLET);
-    Mesh small3 = new Mesh("sphere.fbx", Color.BLUEVIOLET);
+    Mesh center = new Mesh("sphere.fbx", Color.BLACK);
+    Mesh small1 = new Mesh("sphere.fbx", Color.GREEN);
+    Mesh small2 = new Mesh("sphere.fbx", Color.ORANGE);
+    Mesh small3 = new Mesh("sphere.fbx", Color.PURPLE);
 
 
 
@@ -31,27 +31,27 @@ public class Application extends javafx.application.Application {
 
     // called once
     private void initialize() {
-        center.moveBy(0,0,-4);
+        center.moveAt(0,0,-6);
+        small1.moveAt(0,1,-6);
+        small2.moveAt(1,-1,-6);
+        small3.moveAt(-1,-1,-6);
 
-        small1.moveBy(0,0,-4);
-        small2.moveBy(0,0,-4);
-        small3.moveBy(0,0,-4);
-
-        small1.scaleBy(-1);
-        small2.scaleBy(0.9);
-        small3.scaleBy(0.9);
-
-        small2.rotateBy(0,120,0);
-        small3.rotateBy(0,240,0);
+        center.scaleBy(0.6);
+        small1.scaleBy(0.3);
+        small2.scaleBy(0.3);
+        small3.scaleBy(0.3);
 
     }
 
     // called every frame
     private void update(double t, double dt) {
-        double rotationSpeed = 50 * dt;
-        small1.rotateBy(rotationSpeed, rotationSpeed, 0);
-        small2.rotateBy(0, rotationSpeed, rotationSpeed);
-        small3.rotateBy(rotationSpeed, 0, rotationSpeed);
+        double s = 50 * dt;
+
+        center.rotateBy(s,s,s, center.getOrigin());
+
+        small1.rotateBy(s,0,0,center.getOrigin());
+        small2.rotateBy(s,s,0,center.getOrigin());
+        small3.rotateBy(s,0,s,center.getOrigin());
 
     }
 

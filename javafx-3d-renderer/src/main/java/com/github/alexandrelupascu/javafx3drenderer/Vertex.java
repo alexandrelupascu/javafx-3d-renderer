@@ -10,6 +10,7 @@ import static org.ejml.dense.fixed.CommonOps_DDF4.mult;
 
 public class Vertex implements Drawable {
     private DMatrix4 coords; // homogenous coordinates
+    private DMatrix4 originalCoords;
 
     public Vertex(double x, double y, double z) {
         x = sanitizeCoordinate(x);
@@ -17,6 +18,7 @@ public class Vertex implements Drawable {
         z = sanitizeCoordinate(z);
 
         coords = new DMatrix4(x, y, z, 1);
+        originalCoords = coords.copy();
     }
 
     private double sanitizeCoordinate(double coord) {
@@ -25,6 +27,7 @@ public class Vertex implements Drawable {
 
     public Vertex(DMatrix4 coords) {
         this.coords = coords;
+        this.originalCoords = coords;
     }
 
     // method called from the application on a given vertex
@@ -92,6 +95,12 @@ public class Vertex implements Drawable {
         coords.a1 += x;
         coords.a2 += y;
         coords.a3 += z;
+    }
+
+    public void moveAt(double x, double y, double z) {
+        coords.a1 = x + originalCoords.a1;
+        coords.a2 = y + originalCoords.a2;
+        coords.a3 = z + originalCoords.a3;
     }
 
     public DMatrix4 getCoords() {
