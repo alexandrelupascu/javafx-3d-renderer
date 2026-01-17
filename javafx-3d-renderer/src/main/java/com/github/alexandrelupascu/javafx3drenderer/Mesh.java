@@ -16,45 +16,103 @@ import static com.github.alexandrelupascu.javafx3drenderer.Utilities.*;
 import static org.ejml.dense.fixed.CommonOps_DDF4.*;
 
 public class Mesh implements Drawable {
-    private final ArrayList<Vertex> vertices = new ArrayList<>();
-    private final ArrayList<Polygon> polygons = new ArrayList<>();
+    private ArrayList<Vertex> vertices = new ArrayList<>();
+    private ArrayList<Polygon> polygons = new ArrayList<>();
     private Vertex origin;
     private String fileName;
 
-    private Color vertexColor;
-    private Color edgesColor;
+    private ArrayList<Color> verticesColors = new ArrayList<>();;
+    private ArrayList<Color> polygonsColors = new ArrayList<>();;
 
     public Mesh(String fileName) {
         if (generateMesh(fileName)) this.fileName = fileName;
         generateOrigin();
-        this.vertexColor = DEFAULT_COLOR;
-        this.edgesColor = DEFAULT_COLOR;
 
+        for (int i = 0; i < vertices.size(); i++) {
+            verticesColors.add(i, DEFAULT_COLOR);
+        }
+
+        for (int i = 0; i < polygons.size(); i++) {
+            polygonsColors.add(i, DEFAULT_COLOR);
+        }
+
+    }
+
+    public Mesh(Mesh other) {
+        vertices = other.getVertices();
+        polygons = other.getPolygons();
+        fileName = other.getFileName();
+        verticesColors = other.getVerticesColors();
+        polygonsColors = other.getPolygonsColors();
+        generateOrigin();
+    }
+
+    public void addMesh(Mesh other) {
+        vertices.addAll(other.getVertices());
+        polygons.addAll(other.getPolygons());
+        fileName += ", " + other.getFileName();
+        verticesColors.addAll(other.getVerticesColors());
+        verticesColors.addAll(other.getPolygonsColors());
+        generateOrigin();
+    }
+
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+
+    public ArrayList<Color> getVerticesColors() {
+        return verticesColors;
+    }
+
+    public ArrayList<Polygon> getPolygons() {
+        return polygons;
+    }
+
+    public ArrayList<Color> getPolygonsColors() {
+        return polygonsColors;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     public Mesh(String fileName, Color drawColor) {
         if (generateMesh(fileName)) this.fileName = fileName;
         generateOrigin();
-        this.vertexColor = drawColor;
-        this.edgesColor = drawColor;
+        for (int i = 0; i < vertices.size(); i++) {
+            verticesColors.add(i, drawColor);
+        }
+
+        for (int i = 0; i < polygons.size(); i++) {
+            polygonsColors.add(i, drawColor);
+        }
         this.fileName = fileName;
     }
 
     public Mesh(String fileName, Color vertexColor, Color edgesColor) {
+        verticesColors = new ArrayList<>();
+        polygonsColors = new ArrayList<>();
         if (generateMesh(fileName)) this.fileName = fileName;
         generateOrigin();
-        this.vertexColor = vertexColor;
-        this.edgesColor = edgesColor;
+        for (int i = 0; i < vertices.size(); i++) {
+            verticesColors.add(i, vertexColor);
+        }
+
+        for (int i = 0; i < polygons.size(); i++) {
+            polygonsColors.add(i, edgesColor);
+        }
         this.fileName = fileName;
     }
 
     @Override
     public void draw(GraphicsContext ctx, Color originColor) {
+        int i = 0;
         for (Polygon p : polygons) {
-            p.draw(ctx, edgesColor);
+            p.draw(ctx, polygonsColors.get(i++));
         }
+        i = 0;
         for (Vertex v : vertices) {
-            v.draw(ctx, vertexColor);
+            v.draw(ctx, verticesColors.get(i++));
         }
 
         origin.draw(ctx, originColor);
@@ -162,6 +220,9 @@ public class Mesh implements Drawable {
         DMatrix4x4 result = new DMatrix4x4();
         DMatrix4x4 temp = new DMatrix4x4();
 
+        assert Rz != null;
+        assert Ry != null;
+        assert Rx != null;
         mult(Rz, Ry, temp);
         mult(temp, Rx, result);
 
@@ -210,7 +271,7 @@ public class Mesh implements Drawable {
         try {
             return FBXLoader.loadFBXFile(path.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error reading the file: " + fileName);
             return null;
         }
     }

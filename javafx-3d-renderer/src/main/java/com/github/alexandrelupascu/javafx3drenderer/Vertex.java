@@ -10,7 +10,9 @@ import static org.ejml.dense.fixed.CommonOps_DDF4.mult;
 
 public class Vertex implements Drawable {
     private DMatrix4 coords; // homogenous coordinates
-    private DMatrix4 originalCoords;
+    private final DMatrix4 originalCoords;
+
+    private Color color;
 
     public Vertex(double x, double y, double z) {
         x = sanitizeCoordinate(x);
