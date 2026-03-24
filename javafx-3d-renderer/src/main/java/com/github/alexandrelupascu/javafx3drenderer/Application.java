@@ -17,42 +17,22 @@ public class Application extends javafx.application.Application {
     // Define Objects here :
     // ---- define ----
 
-
-
-    Mesh center = new Mesh("sphere.fbx", Color.BLACK);
-    Mesh small1 = new Mesh("sphere.fbx", Color.GREEN);
-    Mesh small2 = new Mesh("sphere.fbx", Color.ORANGE);
-    Mesh small3 = new Mesh("sphere.fbx", Color.PURPLE);
-
-
+    Mesh cube = new Mesh("monkey.fbx", Color.BLUE);
 
     // ---- define ----
 
 
     // called once
     private void initialize() {
-        center.moveAt(0,0,-6);
-        small1.moveAt(0,1,-6);
-        small2.moveAt(1,-1,-6);
-        small3.moveAt(-1,-1,-6);
-
-        center.scaleBy(0.6);
-        small1.scaleBy(0.3);
-        small2.scaleBy(0.3);
-        small3.scaleBy(0.3);
-
+        cube.moveBy(0,-1.5,-6);
     }
 
     // called every frame
     private void update(double t, double dt) {
         double s = 50 * dt;
-
-        center.rotateBy(s,s,s, center.getOrigin());
-
-        small1.rotateBy(s,0,0,center.getOrigin());
-        small2.rotateBy(s,s,0,center.getOrigin());
-        small3.rotateBy(s,0,s,center.getOrigin());
-
+        cube.rotateBy(Math.cos(t) * s, Math.sin(t + 0.5) * s, Math.sin(t) * s);
+        cube.moveBy(Math.cos(t) * dt * 2, Math.sin(t) * dt * 2, 0);
+        cube.scaleBy(1.0 + Math.cos(t) * dt * 0.1);
     }
 
     // called a set amount of time each frame
@@ -62,10 +42,8 @@ public class Application extends javafx.application.Application {
 
     // renders onto the given graphics context
     private void draw(GraphicsContext ctx) {
-        center.draw(ctx, ORIGIN_COLOR);
-        small1.draw(ctx, ORIGIN_COLOR);
-        small2.draw(ctx, ORIGIN_COLOR);
-        small3.draw(ctx, ORIGIN_COLOR);
+        cube.draw(ctx, Color.RED);
+
 
     }
 

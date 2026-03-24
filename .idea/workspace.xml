@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f99ca74-85db-4cd0-b695-2f6e24770f71" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/executionHistory/executionHistory.lock" afterDir="false" />
@@ -12,18 +13,18 @@
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/9.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Edge.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Mesh.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Mesh.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Axis.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Axis.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities$Matrix.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Utilities.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Vertex$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Vertex$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/classes/java/main/com/github/alexandrelupascu/javafx3drenderer/Vertex.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/reports/problems/problems-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId1" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application$1.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Application.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/compileTransaction/stash-dir/Mesh.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/javafx-3d-renderer/src/main/java/com/github/alexandrelupascu/javafx3drenderer/Mesh.java" afterDir="false" />
@@ -64,17 +65,36 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;alexandrelupascu&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/alexandrelupascu/javafx-3d-renderer.git&quot;,
+    &quot;accountId&quot;: &quot;41b7ce89-94e9-4ac1-8698-b2ceab882a30&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="38AkyArOIW95T1uMBNcXJE8Cnge" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,19 +110,25 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/javafx-3d-renderer/src/main/resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="javafx-3d-renderer [run]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
@@ -143,11 +169,46 @@
       <option name="presentableId" value="Default" />
       <updated>1768250015249</updated>
       <workItem from="1768250016571" duration="14213000" />
-      <workItem from="1768324575610" duration="26208000" />
+      <workItem from="1768324575610" duration="44807000" />
+      <workItem from="1768524404907" duration="2001000" />
+      <workItem from="1768581540027" duration="17590000" />
+      <workItem from="1768937649775" duration="5350000" />
+      <workItem from="1769797804049" duration="4896000" />
+      <workItem from="1770690837866" duration="599000" />
+      <workItem from="1771257738666" duration="42000" />
+      <workItem from="1774366916869" duration="1685000" />
     </task>
+    <task id="LOCAL-00001" summary="Refactored Application class with seperate initialize(), update(), fixedUpdate() and draw() methods outside of the handle() mehtod of AnimationTimer">
+      <option name="closed" value="true" />
+      <created>1768430194173</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768430194173</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactored Application class with seperate initialize(), update(), fixedUpdate() and draw() methods outside of the handle() mehtod of AnimationTimer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Application class with seperate initialize(), update(), fixedUpdate() and draw() methods outside of the handle() mehtod of AnimationTimer" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -13,9 +13,11 @@ public class Utilities {
     final static int SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600;
     final static int CANVAS_WIDTH = 800, CANVAS_HEIGH = 600;
 
-    final static double VERTEX_SIZE = 2;
+    final static double VERTEX_SIZE = 5;
     final static Color VERTEX_COLOR = Color.BLUE;
-    final static Color ORIGIN_COLOR= Color.RED;
+    final static Color ORIGIN_COLOR = Color.RED;
+    final static boolean DRAW_ORIGIN = true;
+    final static boolean DRAW_COORDS = false;
 
     final static double EDGE_SIZE = 3;
     final static Color EDGE_COLOR = Color.BLUE;
@@ -81,6 +83,15 @@ public class Utilities {
                     0, 1, 0, origin.a2,
                     0, 0, 1, origin.a3,
                     0, 0, 0, 1
+            );
+        }
+
+        public static DMatrix4x4 getScale(double sx, double sy, double sz) {
+            return new DMatrix4x4(
+                    sx,0,0,0,
+                    0,sy,0,0,
+                    0,0,sz,0,
+                    0,0,0,1
             );
         }
 

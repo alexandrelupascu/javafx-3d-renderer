@@ -21,8 +21,11 @@ public class Mesh implements Drawable {
     private Vertex origin;
     private String fileName;
 
-    private ArrayList<Color> verticesColors = new ArrayList<>();;
-    private ArrayList<Color> polygonsColors = new ArrayList<>();;
+    private ArrayList<Color> verticesColors = new ArrayList<>();
+    ;
+    private ArrayList<Color> polygonsColors = new ArrayList<>();
+    ;
+
 
     public Mesh(String fileName) {
         if (generateMesh(fileName)) this.fileName = fileName;
@@ -36,44 +39,6 @@ public class Mesh implements Drawable {
             polygonsColors.add(i, DEFAULT_COLOR);
         }
 
-    }
-
-    public Mesh(Mesh other) {
-        vertices = other.getVertices();
-        polygons = other.getPolygons();
-        fileName = other.getFileName();
-        verticesColors = other.getVerticesColors();
-        polygonsColors = other.getPolygonsColors();
-        generateOrigin();
-    }
-
-    public void addMesh(Mesh other) {
-        vertices.addAll(other.getVertices());
-        polygons.addAll(other.getPolygons());
-        fileName += ", " + other.getFileName();
-        verticesColors.addAll(other.getVerticesColors());
-        verticesColors.addAll(other.getPolygonsColors());
-        generateOrigin();
-    }
-
-    public ArrayList<Vertex> getVertices() {
-        return vertices;
-    }
-
-    public ArrayList<Color> getVerticesColors() {
-        return verticesColors;
-    }
-
-    public ArrayList<Polygon> getPolygons() {
-        return polygons;
-    }
-
-    public ArrayList<Color> getPolygonsColors() {
-        return polygonsColors;
-    }
-
-    public String getFileName() {
-        return fileName;
     }
 
     public Mesh(String fileName, Color drawColor) {
@@ -104,6 +69,26 @@ public class Mesh implements Drawable {
         this.fileName = fileName;
     }
 
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+
+    public ArrayList<Color> getVerticesColors() {
+        return verticesColors;
+    }
+
+    public ArrayList<Polygon> getPolygons() {
+        return polygons;
+    }
+
+    public ArrayList<Color> getPolygonsColors() {
+        return polygonsColors;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
     @Override
     public void draw(GraphicsContext ctx, Color originColor) {
         int i = 0;
@@ -115,8 +100,14 @@ public class Mesh implements Drawable {
             v.draw(ctx, verticesColors.get(i++));
         }
 
-        origin.draw(ctx, originColor);
-        origin.drawCoords(ctx);
+        if (DRAW_ORIGIN) {
+            origin.draw(ctx, originColor);
+        }
+
+        if (DRAW_COORDS) {
+            origin.drawCoords(ctx);
+        }
+
     }
 
     public boolean generateMesh(String fileName) {
@@ -171,7 +162,7 @@ public class Mesh implements Drawable {
 
     // to be called only in Application.initialize()
     public void moveAt(double x, double y, double z) {
-        origin.moveAt(x,y,z);
+        origin.moveAt(x, y, z);
         for (Vertex v : vertices) {
             v.moveAt(x, y, z);
         }
@@ -194,11 +185,12 @@ public class Mesh implements Drawable {
     }
 
     public void scaleBy(double scaleFactor) {
-        scaleFactor = scaleFactor - 1;
+        scaleBy(scaleFactor, scaleFactor, scaleFactor);
+    }
 
+    public void scaleBy(double sX, double sY, double sZ) {
         for (Vertex v : vertices) {
-            DMatrix4 scaleDirection = findScaleDirection(origin, v, scaleFactor);
-            v.moveBy(scaleDirection.a1, scaleDirection.a2, scaleDirection.a3);
+            v.scaleBy(sX, sY, sZ);
         }
     }
 

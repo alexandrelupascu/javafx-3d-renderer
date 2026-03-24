@@ -105,6 +105,14 @@ public class Vertex implements Drawable {
         coords.a3 = z + originalCoords.a3;
     }
 
+    public void scaleBy(double sX, double sY, double sZ) {
+        // S x coords = new coords
+        DMatrix4x4 scaleMatrix = Matrix.getScale(sX, sY, sZ);
+        DMatrix4 nCoords = new DMatrix4();
+        mult(scaleMatrix, coords, nCoords);
+        coords = nCoords;
+    }
+
     public DMatrix4 getCoords() {
         return coords;
     }
